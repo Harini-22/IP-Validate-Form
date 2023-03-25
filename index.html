@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        .container {  
+        padding: 25px;  
+        border: 7px solid rgb(22, 155, 22);  
+        justify-content: center;
+       
+        }  
+        body {
+            justify-content: center;
+        display: flex;
+        margin: 18px;
+       }
+        form {  
+        color: rgb(109, 101, 101);
+        text-align:center;
+        
+        }  
+        #username,#password,#email,#confirm_password{
+        width: 100%;  
+        margin: 8px 0;  
+        padding: 12px 20px;      
+        border: 3px solid rgb(131, 119, 119);  
+        box-sizing: border-box;  
+        }
+        #submit{
+            width:50%;
+            padding: 15px;  
+            margin: 10px 0px;  
+            border: 2px;  
+            background-color: rgb(22, 155, 22);
+            color:#f1f1f1;
+            font-size: 20px;
+        }
+       
+        </style>
+ 
+
+
+    </head>
+
+<body style="font-family: Bahnschrift,font-size=35px" ><center>
+    <form name="registration" action="NewServlet">
+        <div class="container" align="center">
+            <h1>LOGIN</h1>
+        <table align="center" cellpadding="7" cellspacing="7">
+            <tr >
+                <td> <label style="font-size:20px" for="username"><b>Username</b></label></td>
+                <td> <input type="text" placeholder="Enter Username" id="username" name="username" required></td>
+            </tr>
+
+            <tr>
+                <td> <label style="font-size:20px" for="email"><b>Email</b></label></td>
+                <td>  <input type="email" placeholder="Enter Email" id="email" name="email" required></td>
+            </tr>
+
+            <tr>
+                <td> <label style="font-size:20px" for="password"><b>Password</b></label></td>
+                <td>  <input type="password" placeholder="Enter Password" id="password" name="password" required></td>
+            </tr>
+     <tr>
+                <td> <label style="font-size:20px" for="confirm_password"><b>Current Password</b></label></td>
+                <td>  <input type="password" placeholder="Enter Password"  id="confirm_password" name="confirm_password" required></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">  <input type="button" name="Submit" id="submit" value="submit" onclick="validate()" required></td>
+            </tr>
+           
+        </table>
+
+         </div>
+       
+    </form>
+</center>
+
+<script>
+function validate() {
+    var username = document.registration.username.value;
+    // window.location.href="www.google.com";
+ 
+    var email = document.forms["registration"]["email"].value;
+    at=email.indexOf("@");
+    dot=email.lastIndexOf(".");
+    var password = document.forms["registration"]["password"].value;
+    var confirm_password = document.forms["registration"]["confirm_password"].value;
+
+    if (username.length <=5) {
+        alert("Please enter a valid user name which is length larger than 5.");
+        return false;
+    }
+
+    if (at<1 || (dot-at<2)) {
+        alert("Please enter an email address.");
+        return false;
+    }
+
+    if (password.length <=3) {
+        alert("Please enter a password which is length larger than 3.");
+        return false;
+    }
+
+    if (confirm_password == " ") {
+        alert("Please confirm your password.");
+        return false;
+    }
+
+    if (password != confirm_password) {
+        alert("Passwords do not match.");
+        return false;
+    }
+    alert("Successfully registered!");
+
+    return true;
+}
+</script>
+</body>
+</html>
